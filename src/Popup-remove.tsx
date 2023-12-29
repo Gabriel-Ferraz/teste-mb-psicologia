@@ -4,7 +4,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
-import './styles.css';
+import './Popup-remove.css';
 
 interface PopupDeleteProps {
   open: boolean;
@@ -19,7 +19,7 @@ const PopupDelete: React.FC<PopupDeleteProps> = ({ open, onClose }) => {
       // onClose={onClose} pode habilitar, serve para fechar o dialog sem a necessidade de clicar no X.
       PaperProps={{
         style: {
-          minHeight: '50vh',
+          minHeight: '35vh',
           minWidth: '40%',
           backgroundColor: '#0F0F0F',
           padding: '0% 2%',
@@ -32,15 +32,7 @@ const PopupDelete: React.FC<PopupDeleteProps> = ({ open, onClose }) => {
       </DialogTitle>
       <DialogContent >
         <div className='container_content'>
-          <span className='content_title'>Disciplina</span>
-          <span className='content_subTitle'>nota</span>
-          <input
-            className='content_input'
-            type="text"
-            inputMode="numeric"
-            min="0"
-            max="10"
-          />
+          <span className='content_title'>Você tem certeza que deseja excluir a nota dessa máteria?</span>
         </div>
       </DialogContent>
       <DialogActions>

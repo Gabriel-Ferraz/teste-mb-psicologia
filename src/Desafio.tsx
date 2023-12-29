@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
 import './Desafio.css';
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
-import Button from '@mui/material/Button';
 import MyDialog from './Modal';
-import PopupDelete from './Modal-remove';
+import PopupDelete from './Popup-remove';
+import Tooltip from '@mui/material/Tooltip';
 
 interface Materia {
   id: number;
@@ -62,7 +58,6 @@ const bimestres: Bimestre[] = [
 
 const coresDasMaterias: string[] = ['#CC4090', '#05A2C2', '#C26719', '#9B19C2']; // Exemplo de cores para as matérias
 
-
 function Desafio() {
 
   const [open, setOpen] = React.useState(false);
@@ -90,7 +85,12 @@ function Desafio() {
         <div className="desafio_Content" key={bimestre.id}>
           <div className="desafio_title_button">
             <span className='desafio_title'>Bimestre {bimestre.id}</span>
-            <button className='desafio_button_container' onClick={handleOpen}> Lançar nota <img src="/add.png" className='desafio_button_image' alt="Adicionar" /></button>
+            <Tooltip title="Adicionar nota">
+              <button className='desafio_button_container' onClick={handleOpen}>
+                Lançar nota <img src="/add.png" className='desafio_button_image' alt="Adicionar" />
+              </button>
+            </Tooltip>
+            {/* <button className='desafio_button_container' onClick={handleOpen}> Lançar nota <img src="/add.png" className='desafio_button_image' alt="Adicionar" /></button> */}
            
           </div>
           <div className="desafio_card_container">
@@ -104,7 +104,9 @@ function Desafio() {
                     <span className='desafio_card_nota_text'>Nota: 5</span>
                   </div> 
                 </div>
-                <img className="desafio_remove" src="/remove.png" alt="Remover"  onClick={handleDelete}/>
+                <Tooltip title="Remover">
+                  <img className="desafio_remove" src="/remove.png" alt="Remover" onClick={handleDelete} />
+                </Tooltip>
               </div>
             ))}
           </div>
